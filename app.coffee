@@ -1,3 +1,7 @@
+
+alert = (message) ->
+    document.getElementById('message').innserHTML = message
+
 class App
     constructor: (app_id) ->
         @app_id = app_id
@@ -33,12 +37,11 @@ class App
             alert "페이스북으로 로그인해주세요."  # FIXME: 메세지
 
     on_connected: (auth_response) ->
-        alert "connected"
         profile_image_url = "//graph.facebook.com/985464258142246/picture?width=200&height=200"
         console.log profile_image_url
         @merge(profile_image_url)
         FB.api '/me', (response) ->
-            console.log("Successful login for: #{response.name}")
+            alert "#{response.name}님. 로그인하셨습니다."
 
     check_login_state: ->
         me = @
