@@ -8,7 +8,6 @@ alert = (message) ->
 class App
     constructor: (app_id) ->
         @app_id = app_id
-        @loaded = 0
 
     load_fb_sdk: ->
         # Load the SDK asynchronously
@@ -59,22 +58,22 @@ class App
         img.src = src
         img
 
-    on_image_load: ->
-        @loaded += 1
-        console.log "image loaded : #{@loaded}"
-        console.log @img1
-        console.log @img2
-        if @loaded == 2
-            # composite now
-            ctx.drawImage(@img1, 0, 0)
-            # ctx.globalAlpha = 0.5
-            ctx.drawImage(@img2, 0, 0)
-            # document.getElementById('merged').src = ctx.toDataURL()
-
     merge: (source_url)->
-        @loaded = 0
-        @img1 = @load(source_url, @on_image_load)
-        @img2 = @load('taegeuk-opacity-50.png', @on_image_load)
+        loaded = 0
+        on_image_load: ->
+            @oaded += 1
+            console.log "image loaded : #{loaded}"
+            console.log @img1
+            console.log @img2
+            if loaded == 2
+                # composite now
+                ctx.drawImage(@img1, 0, 0)
+                # ctx.globalAlpha = 0.5
+                ctx.drawImage(@img2, 0, 0)
+                # document.getElementById('merged').src = ctx.toDataURL()
+
+        @img1 = @load(source_url, on_image_load)
+        @img2 = @load('taegeuk-opacity-50.png', on_image_load)
 
 window.app = new App("1507474466213153")
 app.load_fb_sdk()

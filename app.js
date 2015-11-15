@@ -12,7 +12,6 @@
   App = (function() {
     function App(app_id) {
       this.app_id = app_id;
-      this.loaded = 0;
     }
 
     App.prototype.load_fb_sdk = function() {
@@ -74,21 +73,23 @@
       return img;
     };
 
-    App.prototype.on_image_load = function() {
-      this.loaded += 1;
-      console.log("image loaded : " + this.loaded);
-      console.log(this.img1);
-      console.log(this.img2);
-      if (this.loaded === 2) {
-        ctx.drawImage(this.img1, 0, 0);
-        return ctx.drawImage(this.img2, 0, 0);
-      }
-    };
-
     App.prototype.merge = function(source_url) {
-      this.loaded = 0;
-      this.img1 = this.load(source_url, this.on_image_load);
-      return this.img2 = this.load('taegeuk-opacity-50.png', this.on_image_load);
+      var loaded;
+      loaded = 0;
+      ({
+        on_image_load: function() {
+          this.oaded += 1;
+          console.log("image loaded : " + loaded);
+          console.log(this.img1);
+          console.log(this.img2);
+          if (loaded === 2) {
+            ctx.drawImage(this.img1, 0, 0);
+            return ctx.drawImage(this.img2, 0, 0);
+          }
+        }
+      });
+      this.img1 = this.load(source_url, on_image_load);
+      return this.img2 = this.load('taegeuk-opacity-50.png', on_image_load);
     };
 
     return App;
