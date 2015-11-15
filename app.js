@@ -80,8 +80,11 @@
 
     on_image_load = function() {
       this.loaded += 1;
+      console.log("loaded : " + this.loaded);
       if (this.loaded === 2) {
+        console.log("load image 1");
         ctx.drawImage(this.img1, 0, 0);
+        console.log("load image 2");
         return ctx.drawImage(this.img2, 0, 0);
       }
     };

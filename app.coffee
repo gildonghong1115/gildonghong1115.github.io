@@ -62,9 +62,12 @@ class App
 
     on_image_load = ->
         @loaded += 1
+        console.log "loaded : #{@loaded}"
         if @loaded == 2
+            console.log "load image 1"
             # composite now
             ctx.drawImage(@img1, 0, 0)
+            console.log "load image 2"
             # ctx.globalAlpha = 0.5
             ctx.drawImage(@img2, 0, 0)
             # document.getElementById('merged').src = ctx.toDataURL()
