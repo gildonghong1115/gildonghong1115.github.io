@@ -53,7 +53,7 @@ class App
     # image load
     #
     load: (src, onload) ->
-        # http://www.thefutureoftheweb.com/blog/image-onload-isnt-being-called
+        console.log "do #{src} #{onload}"
         img = new Image()
         img.onload = onload
         img.src = src

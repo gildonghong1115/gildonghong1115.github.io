@@ -71,6 +71,7 @@
 
     App.prototype.load = function(src, onload) {
       var img;
+      console.log("do " + src + " " + onload);
       img = new Image();
       img.onload = onload;
       img.src = src;
