@@ -77,6 +77,8 @@
     App.prototype.on_image_load = function() {
       this.loaded += 1;
       console.log("image loaded : " + this.loaded);
+      console.log(this.img1);
+      console.log(this.img2);
       if (this.loaded === 2) {
         ctx.drawImage(this.img1, 0, 0);
         return ctx.drawImage(this.img2, 0, 0);

@@ -62,6 +62,8 @@ class App
     on_image_load: ->
         @loaded += 1
         console.log "image loaded : #{@loaded}"
+        console.log @img1
+        console.log @img2
         if @loaded == 2
             # composite now
             ctx.drawImage(@img1, 0, 0)
