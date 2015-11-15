@@ -37,7 +37,8 @@
 
     App.prototype.on_status_change = function(login_response) {
       if (login_response.status === 'connected') {
-        return this.on_connected(login_response.authResponse);
+        this.on_connected(login_response.authResponse);
+        return $("#login_button").remove();
       } else if (login_response.status === 'not_authorized') {
         return alert("로그인해주세요.");
       } else {

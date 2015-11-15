@@ -31,6 +31,7 @@ class App
         # console.log login_response
         if login_response.status == 'connected'
             @on_connected(login_response.authResponse)
+            $("#login_button").remove()
         else if login_response.status == 'not_authorized'
             alert "로그인해주세요."  # FIXME: 메세지
         else
