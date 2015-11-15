@@ -89,6 +89,7 @@
     };
 
     App.prototype.merge = function(source_url) {
+      console.log("merge : " + source_url);
       this.loaded = 0;
       this.img1 = this.load(source_url, this.on_image_load);
       return this.img2 = this.load('taegeuk-opacity-50.png', this.on_image_load);

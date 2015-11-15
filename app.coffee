@@ -72,6 +72,7 @@ class App
             # document.getElementById('merged').src = ctx.toDataURL()
 
     merge: (source_url)->
+        console.log "merge : #{source_url}"
         @loaded = 0
         @img1 = @load(source_url, @on_image_load)
         @img2 = @load('taegeuk-opacity-50.png', @on_image_load)
