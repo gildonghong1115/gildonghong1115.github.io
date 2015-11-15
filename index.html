@@ -2,17 +2,62 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>Pray for Korea</title>
+<title>Pray for Korea (태극기)</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" />
+<meta property="og:site_name" content="Pray for Korea (태극기)" />
+<meta property="og:title" content="페이스북 프로필 사진에 태극기 올리기" />
+<meta property="og:url" content="http://gildonghong1115.github.io" />
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700|Open+Sans:400,700" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+<style>
+html { position: relative; min-height: 100%; }
+body { margin-top: 60px; }
+h1, h2, h3, h4, h5, h6, th, .navbar a {
+  font-family: "Lato","Helvetica Neue","Apple SD Gothic Neo","Nanum Gothic","Arial","Apple Gothic",sans-serif;
+}
+
+</style>
 </head>
 <body>
 
-<fb:login-button scope="public_profile,email" onlogin="app.check_login_state();">
-</fb:login-button>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-top" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand"><strong>Pray for Korea</strong></a>
+        </div>
+    </div>
+</nav>
 
-<div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <fb:login-button scope="public_profile,email" onlogin="app.check_login_state();"></fb:login-button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <canvas id="canvas" width="300" height="300"></canvas>
+            <img id="merged" />
+        </div>
+    </div>
+</div>
 
-<canvas id="canvas" width="300" height="300"></canvas>
-<img id="merged" />
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-muted">
+                <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
+            </div>
+        </div>
+    </div>
+</footer>
 
 <script src="app.js"></script>
 
