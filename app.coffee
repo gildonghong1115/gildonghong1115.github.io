@@ -59,6 +59,12 @@ class App
         @img1 = @load(source_url, on_image_load)
         @img2 = @load('taegeuk-opacity-50.png', on_image_load)
 
+    draw: ->
+        ctx = canvas.getContext("2d")
+        ctx.drawImage(@img1, 0, 0)
+        # ctx.globalAlpha = 0.5
+        ctx.drawImage(@img2, 0, 0)
+
 loaded = 0
 window.on_image_load = ->
     loaded += 1
@@ -66,14 +72,11 @@ window.on_image_load = ->
     console.log @img1
     console.log @img2
     if loaded == 2
-        ctx.drawImage(@img1, 0, 0)
-        # ctx.globalAlpha = 0.5
-        ctx.drawImage(@img2, 0, 0)
+        app.draw()
 
 window.app = new App("1507474466213153")
 app.load_fb_sdk()
 window.fbAsyncInit = -> app.init_fb()
 
 canvas = document.getElementById("canvas")
-ctx = canvas.getContext("2d")
 
