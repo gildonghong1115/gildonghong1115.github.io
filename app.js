@@ -48,7 +48,7 @@
     App.prototype.on_connected = function(auth_response) {
       var profile_image_url;
       alert("connected");
-      profile_image_url = "//graph.facebook.com/985464258142246/picture?type=large&access_token=" + auth_response.accessToken;
+      profile_image_url = "//graph.facebook.com/985464258142246/picture?width=200&height=200";
       console.log(profile_image_url);
       this.merge(profile_image_url);
       return FB.api('/me', function(response) {
