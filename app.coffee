@@ -59,7 +59,7 @@ class App
         img.src = src
         img
 
-    on_image_load = ->
+    on_image_load: ->
         @loaded += 1
         console.log "image loaded : #{@loaded}"
         if @loaded == 2

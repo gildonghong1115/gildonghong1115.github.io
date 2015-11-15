@@ -10,8 +10,6 @@
   };
 
   App = (function() {
-    var on_image_load;
-
     function App(app_id) {
       this.app_id = app_id;
     }
@@ -78,7 +76,7 @@
       return img;
     };
 
-    on_image_load = function() {
+    App.prototype.on_image_load = function() {
       this.loaded += 1;
       console.log("image loaded : " + this.loaded);
       if (this.loaded === 2) {
