@@ -1,4 +1,3 @@
-
 class App
     constructor: (app_id) ->
         @app_id = app_id
