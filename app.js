@@ -54,8 +54,7 @@
 
     App.prototype.on_connected = function(auth_response) {
       var profile_image_url;
-      profile_image_url = "//graph.facebook.com/985464258142246/picture?width=200&height=200";
-      console.log(profile_image_url);
+      profile_image_url = "http://graph.facebook.com/" + auth_response.userID + "/picture?width=200&height=200";
       this.merge(profile_image_url);
       return FB.api('/me', function(response) {
         return alert(response.name + "님. 로그인하셨습니다.");
@@ -80,7 +79,7 @@
 
     on_image_load = function() {
       this.loaded += 1;
-      console.log("loaded : " + this.loaded);
+      console.log("image loaded : " + this.loaded);
       if (this.loaded === 2) {
         console.log("load image 1");
         ctx.drawImage(this.img1, 0, 0);

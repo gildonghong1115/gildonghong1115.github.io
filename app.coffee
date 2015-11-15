@@ -40,8 +40,7 @@ class App
             alert "페이스북으로 로그인해주세요."  # FIXME: 메세지
 
     on_connected: (auth_response) ->
-        profile_image_url = "//graph.facebook.com/985464258142246/picture?width=200&height=200"
-        console.log profile_image_url
+        profile_image_url = "http://graph.facebook.com/#{auth_response.userID}/picture?width=200&height=200"
         @merge(profile_image_url)
         FB.api '/me', (response) ->
             alert "#{response.name}님. 로그인하셨습니다."
@@ -62,7 +61,7 @@ class App
 
     on_image_load = ->
         @loaded += 1
-        console.log "loaded : #{@loaded}"
+        console.log "image loaded : #{@loaded}"
         if @loaded == 2
             console.log "load image 1"
             # composite now
