@@ -8,6 +8,7 @@ alert = (message) ->
 class App
     constructor: (app_id) ->
         @app_id = app_id
+        @loaded = 0
 
     load_fb_sdk: ->
         # Load the SDK asynchronously
@@ -30,8 +31,8 @@ class App
         @check_login_state()
 
     on_status_change: (login_response) ->
-        console.log "---- on_status_change ----"
-        console.log login_response
+        # console.log "---- on_status_change ----"
+        # console.log login_response
         if login_response.status == 'connected'
             @on_connected(login_response.authResponse)
         else if login_response.status == 'not_authorized'
@@ -53,7 +54,6 @@ class App
     # image load
     #
     load: (src, onload) ->
-        console.log "do #{src} #{onload}"
         img = new Image()
         img.onload = onload
         img.src = src
@@ -63,16 +63,13 @@ class App
         @loaded += 1
         console.log "image loaded : #{@loaded}"
         if @loaded == 2
-            console.log "load image 1"
             # composite now
             ctx.drawImage(@img1, 0, 0)
-            console.log "load image 2"
             # ctx.globalAlpha = 0.5
             ctx.drawImage(@img2, 0, 0)
             # document.getElementById('merged').src = ctx.toDataURL()
 
     merge: (source_url)->
-        console.log "merge : #{source_url}"
         @loaded = 0
         @img1 = @load(source_url, @on_image_load)
         @img2 = @load('taegeuk-opacity-50.png', @on_image_load)

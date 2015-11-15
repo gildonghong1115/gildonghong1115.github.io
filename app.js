@@ -12,6 +12,7 @@
   App = (function() {
     function App(app_id) {
       this.app_id = app_id;
+      this.loaded = 0;
     }
 
     App.prototype.load_fb_sdk = function() {
@@ -39,8 +40,6 @@
     };
 
     App.prototype.on_status_change = function(login_response) {
-      console.log("---- on_status_change ----");
-      console.log(login_response);
       if (login_response.status === 'connected') {
         return this.on_connected(login_response.authResponse);
       } else if (login_response.status === 'not_authorized') {
@@ -69,7 +68,6 @@
 
     App.prototype.load = function(src, onload) {
       var img;
-      console.log("do " + src + " " + onload);
       img = new Image();
       img.onload = onload;
       img.src = src;
@@ -80,15 +78,12 @@
       this.loaded += 1;
       console.log("image loaded : " + this.loaded);
       if (this.loaded === 2) {
-        console.log("load image 1");
         ctx.drawImage(this.img1, 0, 0);
-        console.log("load image 2");
         return ctx.drawImage(this.img2, 0, 0);
       }
     };
 
     App.prototype.merge = function(source_url) {
-      console.log("merge : " + source_url);
       this.loaded = 0;
       this.img1 = this.load(source_url, this.on_image_load);
       return this.img2 = this.load('taegeuk-opacity-50.png', this.on_image_load);
