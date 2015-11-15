@@ -34,7 +34,7 @@ class App
 
     on_connected: (auth_response) ->
         alert "connected"
-        profile_image_url = "://graph.facebook.com/985464258142246/picture?type=large&access_token=#{auth_response.accessToken}"
+        profile_image_url = "//graph.facebook.com/985464258142246/picture?type=large&access_token=#{auth_response.accessToken}"
         console.log profile_image_url
         @merge(profile_image_url)
         FB.api '/me', (response) ->
