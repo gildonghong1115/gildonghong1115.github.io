@@ -3,10 +3,7 @@
   var App, alert, canvas, ctx;
 
   alert = function(message) {
-    $('#message').html(message).removeClass('hide').show();
-    return setTimeout(function() {
-      return $('#message').hide();
-    }, 3000);
+    return $('#message').html(message).removeClass('hide').show();
   };
 
   App = (function() {

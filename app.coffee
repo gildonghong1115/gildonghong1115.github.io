@@ -1,9 +1,6 @@
 
 alert = (message) ->
     $('#message').html(message).removeClass('hide').show()
-    setTimeout ->
-        $('#message').hide()
-    , 3000
 
 class App
     constructor: (app_id) ->
