@@ -56,21 +56,19 @@ class App
         img
 
     merge: (source_url)->
-        loaded = 0
-        on_image_load: ->
-            @oaded += 1
-            console.log "image loaded : #{loaded}"
-            console.log @img1
-            console.log @img2
-            if loaded == 2
-                # composite now
-                ctx.drawImage(@img1, 0, 0)
-                # ctx.globalAlpha = 0.5
-                ctx.drawImage(@img2, 0, 0)
-                # document.getElementById('merged').src = ctx.toDataURL()
-
         @img1 = @load(source_url, on_image_load)
         @img2 = @load('taegeuk-opacity-50.png', on_image_load)
+
+loaded = 0
+window.on_image_load = ->
+    loaded += 1
+    console.log "image loaded : #{loaded}"
+    console.log @img1
+    console.log @img2
+    if loaded == 2
+        ctx.drawImage(@img1, 0, 0)
+        # ctx.globalAlpha = 0.5
+        ctx.drawImage(@img2, 0, 0)
 
 window.app = new App("1507474466213153")
 app.load_fb_sdk()
